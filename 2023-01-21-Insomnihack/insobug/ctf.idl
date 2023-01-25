@@ -1,0 +1,20 @@
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(08554CA4-22B3-4D86-A105-EB93FE22E449),
+	version(1.0),
+	implicit_handle(handle_t hCtf)
+]
+interface CtfInterface {
+	HRESULT InsoRpcQueryCurrentUser([out][string] wchar_t** outUser);
+	HRESULT InsoRpcQueryFileOwner([in][string] const wchar_t* path, [out][string] wchar_t** outOwnerName);
+	HRESULT InsoRpcQueryFileSize([in][string] const wchar_t* path, [out] unsigned int* outSize);
+	HRESULT InsoRpcQueryFileAttributes([in][string] const wchar_t* path, [out] int* outAttributes);
+	HRESULT InsoRpcQueryFileFullPath([in][string] const wchar_t* path, [out][string] wchar_t** outFullPath);
+	HRESULT InsoRpcQueryDirectory([in][string] const wchar_t* path, [out][string] wchar_t** outListing);
+	HRESULT InsoRpcFileExists([in][string] const wchar_t* path, [out] boolean* outExists);
+	HRESULT InsoRpcReadFile([in][string] const wchar_t* path, [out, string] char** outData, [out] unsigned short* outSize);
+	HRESULT InsoRpcReadFilePrivileged([in][string] const wchar_t* path, [out,string] char** outData, [out] unsigned short* outSize);
+	HRESULT InsoRpcWriteFile([in][string] const wchar_t* path, [in, string] char* data, [in] unsigned short size);
+};
